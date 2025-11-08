@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Filament\Resources\BookAppointments;
+
+use App\Filament\Resources\BookAppointments\Pages\CreateBookAppointment;
+use App\Filament\Resources\BookAppointments\Pages\EditBookAppointment;
+use App\Filament\Resources\BookAppointments\Pages\ListBookAppointments;
+use App\Filament\Resources\BookAppointments\Schemas\BookAppointmentForm;
+use App\Filament\Resources\BookAppointments\Tables\BookAppointmentsTable;
+use App\Models\BookAppointment;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class BookAppointmentResource extends Resource
+{
+    protected static ?string $model = BookAppointment::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static ?string $recordTitleAttribute = 'BookAppointment';
+
+    public static function form(Schema $schema): Schema
+    {
+        return BookAppointmentForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return BookAppointmentsTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListBookAppointments::route('/'),
+            'create' => CreateBookAppointment::route('/create'),
+            'edit' => EditBookAppointment::route('/{record}/edit'),
+        ];
+    }
+}
