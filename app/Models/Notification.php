@@ -13,8 +13,8 @@ class Notification extends Model
         'patient_id',
     ];
 
-    public function patient()
+    public function user()
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(User::class);
     }
 }

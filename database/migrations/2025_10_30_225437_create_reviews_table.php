@@ -18,8 +18,8 @@ return new class extends Migration
                 ->constrained('doctors')
                 ->cascadeOnDelete();
 
-            $table->foreignId('patient_id')
-                ->constrained('patients')
+            $table->foreignId('user_id')
+                ->constrained('users')
                 ->cascadeOnDelete();
 
             $table->tinyInteger('rating')->default(0);

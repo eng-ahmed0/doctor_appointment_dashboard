@@ -10,7 +10,7 @@ class BookAppointment extends Model
 
     protected $fillable = [
         'doctor_id',
-        'patient_id',
+        'user_id',
         'doctor_schedule_id',
         'date',
         'status',
@@ -29,9 +29,9 @@ class BookAppointment extends Model
         return $this->belongsTo(Doctor::class);
     }
 
-    public function patient()
+    public function user()
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(User::class);
     }
 
     public function schedule()
