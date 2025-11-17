@@ -8,6 +8,8 @@ use App\Http\Controllers\API\V1\DoctorScheduleController;
 use App\Http\Controllers\API\V1\HospitalController;
 use App\Http\Controllers\API\V1\LocationController;
 use App\Http\Controllers\API\V1\SpecialtyController;
+use App\Http\Controllers\API\V1\PaymentGatewayDetailController;
+use App\Http\Controllers\API\V1\TransicationController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -65,6 +67,14 @@ Route::prefix('v1')->group(function () {
             Route::get('getDoctorSchedule/{id}', 'getDoctorSchedule');
             Route::delete('deleteDoctorSchedule/{id}', 'deleteDoctorSchedule');
 
+        });
+        Route::prefix('paymenGatwayDetail')->controller(PaymentGatewayDetailController::class)->group(function () {  
+            Route::post('createGatway', 'createGatway');
+            Route::delete('deleteGatway/{id}','deleteGatway');
+        });
+        Route::prefix('transcation')->controller(TransicationController::class)->group(function () {  
+            Route::post('createTranscation', 'createTranscation');
+            Route::delete('deleteTranscation/{id}','deleteTranscation');
         });
         
     });
